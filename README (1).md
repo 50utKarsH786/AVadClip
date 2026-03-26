@@ -108,11 +108,11 @@ Add these as **Space Secrets** (Settings → Variables and secrets):
 ## Local Setup
 
 ```bash
-git clone https://huggingface.co/spaces/<your-username>/AVadCLIP
+git clone https://https://huggingface.co/spaces/Utkarsh430/Ai_agent_audio_video_anomally_detection
 cd AVadCLIP
 pip install -r requirements.txt
 python app.py
-# Open http://localhost:7860
+# Open https://huggingface.co/spaces/Utkarsh430/Ai_agent_audio_video_anomally_detection
 ```
 
 ---
