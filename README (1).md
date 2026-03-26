@@ -18,7 +18,7 @@ short_description: Real-time CCTV anomaly detection using CLIP + audio fusion wi
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1%2B-orange)](https://pytorch.org/)
 [![HuggingFace](https://img.shields.io/badge/🤗-HuggingFace%20Spaces-yellow)](https://huggingface.co/spaces)
 
-> **Final Year Project — B.Tech ECE, VIth Semester**
+> **  B.Tech ECE, VIth Semester**
 > IIIT Nagpur · Pratik Ranjan · Anveeksha Jangid · Aman Kanaujiya · Utkarsh Nayan
 
 ---
