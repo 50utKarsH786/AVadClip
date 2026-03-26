@@ -1,0 +1,30 @@
+# AVadCLIP — HuggingFace Spaces requirements
+# Upload this file alongside app.py — that's all you need!
+
+# ── Gradio ────────────────────────────────────────────────────────────────────
+gradio>=4.19.0
+
+# ── PyTorch (CPU — works on HuggingFace Spaces free tier) ────────────────────
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+# ── HuggingFace ───────────────────────────────────────────────────────────────
+transformers>=4.37.0
+huggingface_hub>=0.20.0
+
+# ── Audio processing ──────────────────────────────────────────────────────────
+librosa>=0.10.1
+soundfile>=0.12.1
+
+# ── Video processing ──────────────────────────────────────────────────────────
+opencv-python-headless>=4.8.0
+
+# ── Visualisation ─────────────────────────────────────────────────────────────
+matplotlib>=3.8.0
+
+# ── Numerical ─────────────────────────────────────────────────────────────────
+numpy>=1.24.0
+
+# ── (No extra packages needed for the alert agent —
+#     it uses only Python stdlib: smtplib, threading, json, os) ────────────────
