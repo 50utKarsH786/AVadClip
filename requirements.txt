@@ -1,5 +1,4 @@
 # AVadCLIP — HuggingFace Spaces requirements
-# Upload this file alongside app.py — that's all you need!
 
 # ── Gradio ────────────────────────────────────────────────────────────────────
 gradio>=4.19.0
