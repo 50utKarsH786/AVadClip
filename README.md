@@ -16,9 +16,9 @@
 
 ## The Problem We Solve
 
-Traditional surveillance systems depend on human operators watching screens 24/7 — a task that is cognitively exhausting, expensive, and error-prone. Even modern AI-based systems analyse only video frames, missing critical **audio signals** that uniquely identify events like explosions (massive audio spike), theft (suspicious silence), or riots (simultaneous audio + visual burst).
+Traditional surveillance systems depend on human operators watching screens 24/7 — a task that is cognitively exhausting, expensive, and error-prone. Even modern AI-based systems analyse only video or only audio, missing important cross-modal cues.
 
-**AVadCLIP bridges this gap** — the first open-source implementation of the Wu et al. (2025) paper that fuses CLIP visual embeddings with a custom audio CNN in a learnable adaptive fusion module, achieving richer anomaly representations than either modality alone.
+**AVadCLIP bridges this gap** — the first open-source implementation of the Wu et al. (2025) paper that fuses CLIP visual embeddings with a custom audio CNN in a learnable adaptive fusion module.
 
 ---
 
@@ -32,6 +32,22 @@ Traditional surveillance systems depend on human operators watching screens 24/7
 | 🚨 | **End-to-end alert pipeline** — AI classifies event, determines severity, sends HTML email instantly |
 | ⚡ | **Deployable in minutes** — single `app.py`, runs free on HuggingFace Spaces CPU tier |
 | 📊 | **Rich visualisations** — score timeline, energy chart, fusion weights, anomaly heatmap |
+
+---
+
+## 🖼️ Demo Screenshots
+
+### 1) Analysis Overview
+![Analysis Overview](docs/images/analysis-overview.png)
+
+### 2) Score Timeline
+![Score Timeline](docs/images/score-timeline.png)
+
+### 3) Visual vs Audio Energy
+![Visual vs Audio Energy](docs/images/visual-vs-audio-energy.png)
+
+### 4) Fusion Weights
+![Fusion Weights](docs/images/fusion-weights.png)
 
 ---
 
@@ -81,7 +97,7 @@ This transforms AVadCLIP from a model into a **complete security automation prod
 
 **MIL Mode (trained head)** — Uses the trained MLP scorer. High precision once a checkpoint is fine-tuned on domain footage.
 
-**Zero-Shot Mode (CLIP text)** — Computes cosine similarity between fused audio-visual embeddings and natural language prompts like `"a video of someone stealing"`. Works immediately with **zero training**, enabling detection of novel anomaly types on the fly.
+**Zero-Shot Mode (CLIP text)** — Computes cosine similarity between fused audio-visual embeddings and natural language prompts like `"a video of someone stealing"`. Works immediately with **zero** additional training.
 
 Combined score = (MIL score + zero-shot score) / 2, giving the best of both worlds.
 
