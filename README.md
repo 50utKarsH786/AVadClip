@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![🚀 Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-HuggingFace%20Spaces-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/spaces/Utkarsh430/Ai_agent_audio_video_anomally_detection)
+[![🚀 Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-HuggingFace%20Spaces-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/spaces/Utkarsh430/Ai_age[...]
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1%2B-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
@@ -16,9 +16,9 @@
 
 ## The Problem We Solve
 
-Traditional surveillance systems depend on human operators watching screens 24/7 — a task that is cognitively exhausting, expensive, and error-prone. Even modern AI-based systems analyse only video or only audio, missing important cross-modal cues.
+Traditional surveillance systems depend on human operators watching screens 24/7 — a task that is cognitively exhausting, expensive, and error-prone. Even modern AI-based systems analyse only vi[...]
 
-**AVadCLIP bridges this gap** — the first open-source implementation of the Wu et al. (2025) paper that fuses CLIP visual embeddings with a custom audio CNN in a learnable adaptive fusion module.
+**AVadCLIP bridges this gap** — the first open-source implementation of the Wu et al. (2025) paper that fuses CLIP visual embeddings with a custom audio CNN in a learnable adaptive fusion module[...]
 
 ---
 
@@ -38,16 +38,16 @@ Traditional surveillance systems depend on human operators watching screens 24/7
 ## 🖼️ Demo Screenshots
 
 ### 1) Analysis Overview
-![Analysis Overview](docs/images/analysis-overview.png)
+![Analysis Overview](output/analysis_overview.png)
 
 ### 2) Score Timeline
-![Score Timeline](docs/images/score-timeline.png)
+![Score Timeline](output/score_timeline.png)
 
 ### 3) Visual vs Audio Energy
-![Visual vs Audio Energy](docs/images/visual-vs-audio-energy.png)
+![Visual vs Audio Energy](output/visual_vs_audio_energy.png)
 
 ### 4) Fusion Weights
-![Fusion Weights](docs/images/fusion-weights.png)
+![Fusion Weights](output/fusion_weights.png)
 
 ---
 
@@ -55,17 +55,17 @@ Traditional surveillance systems depend on human operators watching screens 24/7
 
 ```
 VIDEO ──→ CLIP ViT-B/16 (FROZEN, HuggingFace) ──→ Temporal 1D Conv ──→ visual_feat [T, 512]
-                                                                                │
+                                                                                 │
 AUDIO ──→ Mel Spectrogram ──→ 4-block CNN ──→ MLP Projection ──→ audio_feat [T, 512]
-                                                                                │
-                     ┌──────────────── Adaptive Fusion ─────────────────┐
-                     │   joint = cat([visual, audio])  → [B, T, 1024]   │
-                     │   W     = sigmoid(Linear(joint)) → [B, T, 512]   │  ← per-dimension audio gate
-                     │   R     = MLP(joint)             → [B, T, 512]   │  ← cross-modal residual
-                     │   fused = LayerNorm(visual + W ⊙ R)              │
-                     └──────────────────────────────────────────────────┘
-                                                │
-                     MIL Scorer MLP (512→256→128→1) ──→ score ∈ [0,1] per frame
+                                                                                 │
+                      ┌──────────────── Adaptive Fusion ─────────────────┐
+                      │   joint = cat([visual, audio])  → [B, T, 1024]   │
+                      │   W     = sigmoid(Linear(joint)) → [B, T, 512]   │  ← per-dimension audio gate
+                      │   R     = MLP(joint)             → [B, T, 512]   │  ← cross-modal residual
+                      │   fused = LayerNorm(visual + W ⊙ R)              │
+                      └──────────────────────────────────────────────────┘
+                                                 │
+                      MIL Scorer MLP (512→256→128→1) ──→ score ∈ [0,1] per frame
 ```
 
 ### Component Breakdown
@@ -97,7 +97,7 @@ This transforms AVadCLIP from a model into a **complete security automation prod
 
 **MIL Mode (trained head)** — Uses the trained MLP scorer. High precision once a checkpoint is fine-tuned on domain footage.
 
-**Zero-Shot Mode (CLIP text)** — Computes cosine similarity between fused audio-visual embeddings and natural language prompts like `"a video of someone stealing"`. Works immediately with **zero** additional training.
+**Zero-Shot Mode (CLIP text)** — Computes cosine similarity between fused audio-visual embeddings and natural language prompts like `"a video of someone stealing"`. Works immediately with **zer[...]
 
 Combined score = (MIL score + zero-shot score) / 2, giving the best of both worlds.
 
